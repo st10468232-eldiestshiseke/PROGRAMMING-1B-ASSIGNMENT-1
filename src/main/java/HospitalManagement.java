@@ -20,9 +20,55 @@ public class HospitalManagement {
     }
     private void initializeWard(){
         int bedCount = 1;
-        for(int c = 0; c < 5; c++) {
+        for(int r = 0; r < 4; r++) {
+            for(int c = 0; c < 5; c++){
             wardBeds[r][c] = String.format("B%02d", bedCount++);
+            }
         }
+        
+    }
+    public boolean registerPatient(Patient patient) {
+        if (patient == null || patient.getPatientId() == null || patient.getPatientId().trim().isEmpty()){
+        return false;
+        }
+        for(Patient p : patients) {
+           if (p.getPatientId().equalsIgnoreCase(patient.getPatientId())){
+            return false;
+           }
+        }
+        patients.add(patient);
+        return true;
+    }
+    public Patient searchPatient(String patientId){
+        for (Patient p : patients) {
+            if (p.getPatientId().equalsIgnoreCase(patientId)){
+                return p;
+            }
+        }
+        return null;
+    }
+    public boolean updatePatient(String patientId,String firstName, String lastName, int age, String gender, String condition){
+        Patient p = searchPatient(patientId);
+        if (p != null) {
+            p.setFirstName(firstName);
+            p.setLastName(lastName);
+            p.setAge(age);
+            p.setGender(gender);
+            p.setMedicalCondition(condition);
+            return true;
+        }
+        return false;
+    }
+    public boolean deletePatient(String patientId) {
+        Patient p = searchPatient(patientId);
+        if (p != null) {
+            if (p instanceof Inpatient inp && imp.getBedNumber() != null) {
+            releaseBed(imp.getBedNumber());
+            }
+            patients.remove(p);
+            return true;
+        }
+        return false;
     }
     
 }
