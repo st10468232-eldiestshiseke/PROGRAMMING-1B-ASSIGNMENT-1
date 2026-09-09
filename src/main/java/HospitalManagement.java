@@ -14,7 +14,7 @@ public class HospitalManagement {
     private ArrayList<Patient> patients = new ArrayList<>();
     private String[][] wardBeds = new String[4][5]; // 4 rows x 5 columns = 20 beds
 
-    private HospitalManagement() {
+    public HospitalManagement() {
         initializeWard();
     }
 

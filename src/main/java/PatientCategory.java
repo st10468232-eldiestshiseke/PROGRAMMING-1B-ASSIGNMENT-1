@@ -10,5 +10,5 @@
 public enum PatientCategory {
     INPATIENT,
     OUTPATIENT,
-    EMERGRENCY 
+    EMERGENCY 
 }
