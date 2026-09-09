@@ -62,13 +62,47 @@ public class HospitalManagement {
     public boolean deletePatient(String patientId) {
         Patient p = searchPatient(patientId);
         if (p != null) {
-            if (p instanceof Inpatient inp && imp.getBedNumber() != null) {
-            releaseBed(imp.getBedNumber());
+            if (p instanceof Inpatient inp && inp.getBedNumber() != null) {
+            releaseBed(inp.getBedNumber());
             }
             patients.remove(p);
             return true;
         }
         return false;
     }
+    public boolean allocatedBed(String patientId, String bedCode) {
+        if (getAvailableBedCount() == 0) return false;
+        Patient p = searchPatient(patientId);
+        if (p == null || !(p instanceof Inpatient inpatient)) return false;
+        if (inpatient.getBedNumber() != null) return false;
+        
+        for (int r = 0; r < 4; r++) {
+            for (int c = 0; c < 5; c++) {
+                if (wardBeds[r][c].equalsIgnoreCase(bedCode)) {
+                    wardBeds[r][c] = "OCCUPIED";
+                    inpatient.setBedNumber(bedCode.toUpperCase());
+                    inpatient.setWardNumber("ward 1");
+                    return true;
+                }
+            }
+        }
+        return false; // Bed unavailable or non-existant
     
+    }
+    public boolean releaseBed (String bedCode) {
+        boolean bedFound = false;
+        int bedNum = 1;
+        
+        for (int r = 0; r < 4; r++) {
+            for (int c = 0; c <5; c++) {
+                String targetBed = String.format("B%02d", bedNum++);
+                if (targetBed.equalsIgnoreCase(bedCode) && wardBeds[r][c].equals("OCCUPIED")) {
+                    wardBeds[r][c] =targetBed;
+                    bedFound = true;
+                    break;
+                }
+            }
+        }
+        
+    }
 }
