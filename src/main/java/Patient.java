@@ -4,9 +4,11 @@
  */
 
 /**
- *
- * @author User
- */
+ * Author: Bro code
+ * Title: Java Full Course for free
+ * Available at: https://www.youtube.com/watch?v=xTtL8E4LzTQ
+ * Date accessed: 09/09/2026
+ */ 
 public class Patient {
     private String patientId;
     private String firstName;
@@ -28,7 +30,7 @@ public class Patient {
     
     // Getters And Setters
     public String getPatientId() {return patientId;}
-    public String getFristName() {return firstName;}
+    public String getFirstName() {return firstName;}
     public String getLastName() {return lastName;}
     public void setFirstName(String firstName) {this.firstName = firstName;}
     public void setLastName(String lastName) {this.lastName = lastName;}

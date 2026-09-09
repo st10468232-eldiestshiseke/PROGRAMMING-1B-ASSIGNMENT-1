@@ -4,9 +4,11 @@
  */
 
 /**
- *
- * @author User
- */
+ * Author: Bro code
+ * Title: Java Full Course for free
+ * Available at: https://www.youtube.com/watch?v=xTtL8E4LzTQ
+ * Date accessed: 09/09/2026
+ */ 
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -94,23 +96,25 @@ public class HospitalManagement {
     }
 
     public boolean releaseBed(String bedCode) {
-        for (int r = 0; r < 4; r++) {
-            for (int c = 0; c < 5; c++) {
-                if (wardBeds[r][c].equalsIgnoreCase(bedCode) && wardBeds[r][c].equals("OCCUPIED")) {
-                    wardBeds[r][c] = bedCode.toUpperCase();
-                    for (Patient p : patients) {
-                        if (p instanceof Inpatient inp && bedCode.equalsIgnoreCase(inp.getBedNumber())) {
-                            inp.setBedNumber(null);
-                            inp.setWardNumber(null);
-                            break;
-                        }
+    for (int r = 0; r < 4; r++) {
+        for (int c = 0; c < 5; c++) {
+            if (wardBeds[r][c].equals("OCCUPIED")) {
+                // Check if this bed was allocated to a patient
+                for (Patient p : patients) {
+                    if (p instanceof Inpatient inp && bedCode.equalsIgnoreCase(inp.getBedNumber())) {
+                        // Reset the bed in wardBeds
+                        wardBeds[r][c] = bedCode.toUpperCase();
+                        // Clear the bed assignment for the patient
+                        inp.setBedNumber(null);
+                        inp.setWardNumber(null);
+                        return true;
                     }
-                    return true;
                 }
             }
         }
-        return false;
     }
+    return false; // Bed not found or not occupied
+}
 
     public String displayWardLayout() {
         StringBuilder sb = new StringBuilder();

@@ -4,9 +4,11 @@
  */
 
 /**
- *
- * @author User
- */
+ * Author: Bro code
+ * Title: Java Full Course for free
+ * Available at: https://www.youtube.com/watch?v=xTtL8E4LzTQ
+ * Date accessed: 09/09/2026
+ */ 
 public class Inpatient extends Patient {
     private String wardNumber;
     private String bedNumber;
