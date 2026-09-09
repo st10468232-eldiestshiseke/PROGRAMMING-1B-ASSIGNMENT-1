@@ -103,6 +103,17 @@ public class HospitalManagement {
                 }
             }
         }
+        if (bedFound) {
+            for (Patient p : patients) {
+                if (p instanceof Inpatient inp && bedCode.equalsIgnoreCase(inp.getBedNumber())) {
+                    inp.setBedNumber(null);
+                    inp.setWardNumber(null);
+                    break;
+                }
+            }
+            return true;
+        }
+        return false;
         
     }
 }
