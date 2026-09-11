@@ -1,5 +1,5 @@
 # **Medicare Hospital Patient Admission System**
-**---**
+
 
 ## **PROG6112 Practical Assignment 1 — Comprehensive Documentation & Setup Guide**
 ---
@@ -43,7 +43,10 @@ https://youtu.be/WfKKKjyOPi0
 ### **6. REFERENCE**
 
 **Author:** _Bro code_
+
 **Title:** _Java Full Course for free_
+
 **Available at:** https://www.youtube.com/watch?v=xTtL8E4LzTQ
+
 **Date accessed:** _09/09/2026_
  
