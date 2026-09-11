@@ -43,7 +43,8 @@ public class Patient {
     public PatientCategory getCategory() {return category;}
     
     public String displayDetails() {
-        return String.format("ID: %s | Name: %s | Age: %d | Gender: %s | Condition: %s | Category: %s", patientId, firstName, lastName, age, gender, medicalCondition, category);
+        return String.format("ID: %-6s | Name: %-10s %-10s | Age: %-3s | Gender: %-6s | Condition: %-12s | Category: %-10s",
+        patientId, firstName, lastName, age, gender, medicalCondition, category);
     } 
     public int compareTo(Patient other) {
         return this.patientId.compareToIgnoreCase(other.patientId);
